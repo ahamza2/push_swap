@@ -6,7 +6,7 @@
 /*   By: haarab <haarab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 13:30:40 by haarab            #+#    #+#             */
-/*   Updated: 2023/04/06 17:46:20 by haarab           ###   ########.fr       */
+/*   Updated: 2023/04/06 20:44:57 by haarab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,6 @@ char	**ft_split(char const *s)
 		i++;
 	}
 	arr[i] = 0;
-	free (arr);
 	return (arr);
 }
 
@@ -108,6 +107,7 @@ char	**ft_split(char const *s)
 int *returnint(char **str)
 {
 	int		*ret;
+	char	**s;
 	int 	i;
 	int		j;
 	int		k;
@@ -119,15 +119,17 @@ int *returnint(char **str)
 	while (i <= t_vars.y)
 	{
 		j = 0;
-		while (ft_split(str[i])[j])
+		s = ft_split(str[i]);
+		while (s[j])
 		{
-			ret[k] = ft_atoi(ft_split(str[i])[j]);
+			ret[k] = ft_atoi(s[j]);
+			free(s[j]);
 			k++;
 			j++;
 		}
+		free(s);
 		i++;
 	}
-	free (ret);
 	return (ret);
 }
 
@@ -426,6 +428,7 @@ void	check_onehundred(int *str, int *ptr)
 	}
 	p = returnstr(str, ptr);
 	p = p + b;
+	free (res);
 	// printf ("move ||||||||+++++++++++++++++ %d +++++++++++++++++++|||||||||||||||\n", p);
 }
 
@@ -489,6 +492,7 @@ void	check_fivehundred(int *str, int *ptr)
 	}
 	p = returnstr(str, ptr);
 	p = p + b;
+	free(res);
 	// printf ("move ||||||||+++++++++++++++++ %d +++++++++++++++++++|||||||||||||||\n", p);
 }
 
@@ -529,14 +533,14 @@ void checkint(int *str)
 	
 	// k = laadad_lkbir(ptr);
 	
-	i = 0;
-	while (i < t_vars.n)
-	{
-		printf("STACK : A = %d\n", str[i]);
-		i++;
-	}
-	printf("------------\n");
-	printf("STACK : A\n");
+	// i = 0;
+	// while (i < t_vars.n)
+	// {
+	// 	printf("STACK : A = %d\n", str[i]);
+	// 	i++;
+	// }
+	// printf("------------\n");
+	// printf("STACK : A\n");
 	
 	// i = 0;
 	// while (i < t_vars.k)
@@ -555,7 +559,7 @@ void checkint(int *str)
 	// }
 	// printf("------------\n");
 	// printf("ssssssstttttttt\n");
-	free (ptr);
+	free(ptr);
 }
 
 int	main(int ac, char **av)
@@ -570,5 +574,6 @@ int	main(int ac, char **av)
 	str = returnint(av);
 	// while (1);
 	checkint(str);
+	// while (1);
 	return (0);
 }
