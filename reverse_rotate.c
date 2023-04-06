@@ -6,7 +6,7 @@
 /*   By: haarab <haarab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 20:04:31 by haarab            #+#    #+#             */
-/*   Updated: 2023/03/10 17:18:42 by haarab           ###   ########.fr       */
+/*   Updated: 2023/04/05 15:56:04 by haarab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,72 +14,74 @@
 
 void	rotate_rra(int *str)
 {
+	int d;
 	int	i;
-	int	j;
-	int	k;
-	int	n;
-
-	n = 0;
-	while (n <= 1)
+	int k;
+	
+	i = 0;
+	k = 0;
+	while (i < t_vars.n)
 	{
-		i = 0;
-		j = 1;
-		if (str[i])
-			k = str[i];
-		while (str[i])
-			str[i++] = str[j++];
-		i--;
-		str[i] = k;
-		n++;
+		d = str[k];
+		str[k] = str[i];
+		str[i] = d;
+		i++;
 	}
+	write(1, "rra\n", 4);
 }
 
 void	rotate_rrb(int *ptr)
 {
+	int d;
 	int	i;
-	int	j;
-	int	k;
-	int	n;
-
-	n = 0;
-	while (n <= 1)
+	int k;
+	
+	i = 0;
+	k = 0;
+	while (i < t_vars.k)
 	{
-		i = 0;
-		j = 1;
-		if (ptr[i])
-			k = ptr[i];
-		while (ptr[i])
-			ptr[i++] = ptr[j++];
-		i--;
-		ptr[i] = k;
-		n++;
+		d = ptr[k];
+		ptr[k] = ptr[i];
+		ptr[i] = d;
+		i++;
 	}
+	write(1, "rrb\n", 4);
 }
 
 void	rotate_rrr(int *str, int *ptr)
 {
-	int	i;
-	int	j;
-	int	k;
-	int	n;
-
-	n = 0;
-	while (n <= 1)
-	{
-		i = 0;
-		j = 1;
-		k = str[i];
-		while (str[i])
-			str[i++] = str[j++];
-		i--;
-		str[i] = k;
-		i = 0;
-		j = 1;
-		k = ptr[i];
-		while (ptr[i])
-			ptr[i++] = ptr[j++];
-		i--;
-		ptr[i] = k;
-		n++;
-	}
+	rotate_rra(str);
+	rotate_rrb(ptr);
 }
+
+// void	rotate_rrr(int *str, int *ptr)
+// {
+// 	int d;
+// 	int	i;
+// 	int k;
+	
+// 	i = 0;
+// 	k = 0;
+// 	while (str[k])
+// 		k++;
+// 	k--;
+// 	while (str[i])
+// 	{
+// 		d = str[k];
+// 		str[k] = str[i];
+// 		str[i] = d;
+// 		i++;
+// 	}
+// 	i = 0;
+// 	k = 0;
+// 	while (ptr[k])
+// 		k++;
+// 	k--;
+// 	while (ptr[i])
+// 	{
+// 		d = ptr[k];
+// 		ptr[k] = ptr[i];
+// 		ptr[i] = d;
+// 		i++;
+// 	}
+// }

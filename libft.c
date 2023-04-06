@@ -6,7 +6,7 @@
 /*   By: haarab <haarab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 12:54:00 by haarab            #+#    #+#             */
-/*   Updated: 2023/03/10 12:27:22 by haarab           ###   ########.fr       */
+/*   Updated: 2023/04/05 21:17:43 by haarab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,15 @@ int	ft_atoi(const char *str)
 	return (res * n);
 }
 
-// size_t	ft_strlen(const char *str)
-// {
-// 	size_t	i;
+void	free_malloc(char **str)
+{
+	int	i;
 
-// 	i = 0;
-// 	while (str[i] != '\0')
-// 	i++;
-// 	return (i);
-// }
+	i = 0;
+	while (str[i])
+	{
+		free (str[i]);
+		i++;
+	}
+	free(str);
+}

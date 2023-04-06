@@ -6,7 +6,7 @@
 /*   By: haarab <haarab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 18:01:01 by haarab            #+#    #+#             */
-/*   Updated: 2023/03/10 17:19:11 by haarab           ###   ########.fr       */
+/*   Updated: 2023/04/05 16:18:03 by haarab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,72 +14,131 @@
 
 void	swap_sa(int *str)
 {
-	int	i;
 	int	k;
 
-	i = 0;
-	if (str[i])
+	if (str[0] > str[1])
 	{
-		k = str[i];
-		str[i] = str[i + 1];
-		str[i + 1] = k;
+		k = str[0];
+		str[0] = str[1];
+		str[1] = k;
 	}
+	write(1, "sa\n", 3);
 }
 
 void	swap_sb(int *ptr)
 {
-	int	i;
 	int	k;
 
-	i = 0;
-	if (ptr[i])
+	if (ptr[0] > ptr[1])
 	{
-		k = ptr[i];
-		ptr[i] = ptr[i + 1];
-		ptr[i + 1] = k;
+		k = ptr[0];
+		ptr[0] = ptr[1];
+		ptr[1] = k;
 	}
+	write(1, "sb\n", 3);
 }
 
 void	swap_ss(int *str, int *ptr)
 {
-	int	i;
-	int	k;
+	swap_sa(str);
+	swap_sb(ptr);
+	// int	i;
+	// int	k;
 
-	i = 0;
-	if (str[i])
-	{
-		k = str[i];
-		str[i] = str[i + 1];
-		str[i + 1] = k;
-	}
-	i = 0;
-	if (ptr[i])
-	{
-		k = ptr[i];
-		ptr[i] = ptr[i + 1];
-		ptr[i + 1] = k;
-	}
+	// i = 0;
+	// if (str[i])
+	// {
+	// 	k = str[i];
+	// 	str[i] = str[i + 1];
+	// 	str[i + 1] = k;
+	// }
+	// i = 0;
+	// if (ptr[i])
+	// {
+	// 	k = ptr[i];
+	// 	ptr[i] = ptr[i + 1];
+	// 	ptr[i + 1] = k;
+	// }
 	// printf ("%s", str);
 }
 
-
-int *swap_pa(int *str, int *ptr, int i, int j)
+int *swap_pa(int *str, int *ptr, int j)
 {
-	if (ptr[i])
+	int i;
+	int	k;
+	int n;
+	int s;
+	
+	n = 0;
+	while (n <= t_vars.n)
 	{
-		str[j] = ptr[i];
-		ptr[i] = 0;
-	} 
+		s = str[0];
+		str[0] = str[n];
+		str[n] = s;
+		n++;
+	}
+	i = 0;
+	str[i] = ptr[j];
+	n = 0;
+	while (n < t_vars.k)
+	{
+		ptr[j] = ptr[j + 1];
+		j++;
+		n++;
+	}
+	t_vars.n++;
+	t_vars.k--;
+	write(1, "pa\n", 3);
 	return(str);
 }
 
-int	*swap_pb(int *str, int *ptr, int k, int j)
+int	*swap_pb(int *str, int *ptr, int j)
 {
-	// printf("k = %d\n", str[k]);
-	if (str[k])
+	int i;
+	int	k;
+	int n;
+	int s;
+	
+	n = 0;
+	s = 0;
+	while (n <= t_vars.k)
 	{
-		ptr[j] = str[k];
-		str[k] = 0;
+		s = ptr[0];
+		ptr[0] = ptr[n];
+		ptr[n] = s;
+		n++;
 	}
+	i = 0;
+	ptr[i] = str[j];
+	n = 0;
+	while (n < t_vars.n)
+	{
+		str[j] = str[j + 1];
+		j++;
+		n++;
+	}
+	t_vars.n--;
+	t_vars.k++;
+	write(1, "pb\n", 3);
 	return(ptr);
 }
+	
+	// if (str[j]) -1 0 120
+	// {
+	// 	ptr[i] = str[j];
+	// }
+	// while (ptr[i])
+	// {
+	// 	ptr[i + 1] = ptr[i];
+	// 	i++;
+	// }
+	// printf ("s = %d\n", i);
+	// i = 0;
+	// i++;
+	// while (str[j])
+	// {
+	// 	str[j] = str[j + 1];
+	// 	j++;
+	// }
+	// j--;
+	// str[j] = 0;
