@@ -6,7 +6,7 @@
 /*   By: haarab <haarab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 13:30:40 by haarab            #+#    #+#             */
-/*   Updated: 2023/04/06 20:44:57 by haarab           ###   ########.fr       */
+/*   Updated: 2023/04/10 16:22:05 by haarab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,43 @@ char	**ft_split(char const *s)
 	return (arr);
 }
 
+int	check_elemen(char **str)
+{
+	int i;
+
+	i = 0;
+	while(str[i])
+	{
+		i++;
+	}
+	i--;
+	return(i);
+}
+
+// int	check_elemen(char **str)
+// {
+// 	int i;
+// 	int j;
+// 	int b;
+	
+// 	i = 1;
+// 	while(str[i])
+// 	{
+// 		j = 0;
+// 		while (str[i][j])
+// 		{
+// 			if (str[i][j] == ' ' && (str[i][j + 1] >= '0' && str[i][j + 1] <= '9'))
+// 			{
+// 				b++;
+// 			}
+// 			j++;
+// 		}
+// 		i++;
+// 		b++;
+// 	}
+// 	b--;
+// 	return(b);
+// }
 
 
 int *returnint(char **str)
@@ -111,42 +148,54 @@ int *returnint(char **str)
 	int 	i;
 	int		j;
 	int		k;
-	int		n;
+	int		b;
 	
 	ret = malloc(sizeof(int) * t_vars.y + 1);
+	if (ret == NULL)
+		return (NULL);
 	i = 1;
 	k = 0;
 	while (i <= t_vars.y)
 	{
+		// sleep (1);
 		j = 0;
 		s = ft_split(str[i]);
 		while (s[j])
 		{
-			ret[k] = ft_atoi(s[j]);
-			free(s[j]);
+			if (check_Number(s[j]) == 1)
+			{
+				ret[k] = ft_atoi(s[j]);
+				free(s[j]);
+			}
 			k++;
 			j++;
 		}
-		free(s);
 		i++;
+		free(s);
 	}
 	return (ret);
 }
 
-
-	// swap_sa(str);
-
-int	check_elemen(char **str)
+int	code_iscorrect(int *str)
 {
 	int i;
+	int j;
+	int b;
 	
 	i = 0;
-	while(str[i])
+	j = 1;
+	b = 1;
+	while (i < t_vars.y - 1)
 	{
+		if (str[i] < str[j])
+		{
+			b++;
+		}
+		j++;
 		i++;
 	}
-	i--;
-	return(i);
+	// printf ("jjjjj ================ %d ==================\n", j);
+	return (b);
 }
 
 	
@@ -204,7 +253,7 @@ int	tree_element(int *str)
 	i = 0;
 	j = 0;
 	k = 0;
-	while (k < t_vars.n)
+	while (k < t_vars.y)
 	{
 		if (t_vars.n == 2 && str[i] > str[1])
 		{
@@ -530,35 +579,15 @@ void checkint(int *str)
 	{
 		check_fivehundred(str, ptr);
 	}
+	i = 0;
+	while (i < t_vars.y)
+	{
+		printf("STACK : A = %d\n", str[i]);
+		i++;
+	}
+	printf("------------\n");
+	printf("STACK : A\n");
 	
-	// k = laadad_lkbir(ptr);
-	
-	// i = 0;
-	// while (i < t_vars.n)
-	// {
-	// 	printf("STACK : A = %d\n", str[i]);
-	// 	i++;
-	// }
-	// printf("------------\n");
-	// printf("STACK : A\n");
-	
-	// i = 0;
-	// while (i < t_vars.k)
-	// {
-	// 	printf("STACK : B = %d\n",ptr[i]);
-	// 	i++;
-	// }
-	// printf("------------\n");
-	// printf("STACK : B\n");
-	// printf("3adad lkbir ========== %d\n", k);
-	// i = 0;
-	// while (i < t_vars.y)
-	// {
-	// 	printf("st ========== %d\n", res[i]);
-	// 	i++;
-	// }
-	// printf("------------\n");
-	// printf("ssssssstttttttt\n");
 	free(ptr);
 }
 
@@ -567,13 +596,18 @@ int	main(int ac, char **av)
 	int		*res;
 	int		*str;
 	int		i;
+	int		j;
 
 	i = 0;
 	t_vars.n = check_elemen(av);
 	t_vars.y = t_vars.n;
+	max_min(av);
 	str = returnint(av);
-	// while (1);
-	checkint(str);
+	if (code_iscorrect(str) != t_vars.y)
+	{
+		check_doubleelement(str);
+		checkint(str);
+	}
 	// while (1);
 	return (0);
 }

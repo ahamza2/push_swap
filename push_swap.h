@@ -6,7 +6,7 @@
 /*   By: haarab <haarab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:55:48 by haarab            #+#    #+#             */
-/*   Updated: 2023/04/05 21:17:57 by haarab           ###   ########.fr       */
+/*   Updated: 2023/04/08 23:31:10 by haarab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	rotate_rrb(int *ptr);
 
 void	rotate_rrr(int *str, int *ptr);
 
-int		check(char *str);
+int		check_Number(char *str);
 
 int		ft_atoi(const char *str);
 
@@ -75,5 +75,9 @@ int		tree_element(int *str);
 void	five_element(int *str, int *ptr);
 
 void	free_malloc(char **str);
+
+void	check_doubleelement(int	*str);
+
+void	max_min(char	**str);
 
 #endif
