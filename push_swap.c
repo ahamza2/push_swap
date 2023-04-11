@@ -6,7 +6,7 @@
 /*   By: haarab <haarab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 13:30:40 by haarab            #+#    #+#             */
-/*   Updated: 2023/04/10 16:22:05 by haarab           ###   ########.fr       */
+/*   Updated: 2023/04/11 21:52:20 by haarab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,30 +115,32 @@ int	check_elemen(char **str)
 	return(i);
 }
 
-// int	check_elemen(char **str)
-// {
-// 	int i;
-// 	int j;
-// 	int b;
+int	check_elem(char **str)
+{
+	char **s;
+	int i;
+	int j;
+	int b;
 	
-// 	i = 1;
-// 	while(str[i])
-// 	{
-// 		j = 0;
-// 		while (str[i][j])
-// 		{
-// 			if (str[i][j] == ' ' && (str[i][j + 1] >= '0' && str[i][j + 1] <= '9'))
-// 			{
-// 				b++;
-// 			}
-// 			j++;
-// 		}
-// 		i++;
-// 		b++;
-// 	}
-// 	b--;
-// 	return(b);
-// }
+	i = 1;
+	b = 0;
+	while(str[i])
+	{
+		j = 1;
+		s = ft_split(str[i]);
+	// 	printf ("s ++++++++++++++++++++++++ %s ++++++++++++++++++++\n",*s);
+		while (s[j])
+		{
+			// printf ("str[j] ========================== %s ===========================\n",str[j]);
+			b++;
+			j++;
+		}
+		b++;
+		i++;
+	}
+	// printf ("b ========================== %d ===========================\n",b);
+	return(b);
+}
 
 
 int *returnint(char **str)
@@ -150,23 +152,25 @@ int *returnint(char **str)
 	int		k;
 	int		b;
 	
-	ret = malloc(sizeof(int) * t_vars.y + 1);
+	ret = malloc(sizeof(int) * t_vars.y);
 	if (ret == NULL)
 		return (NULL);
 	i = 1;
 	k = 0;
-	while (i <= t_vars.y)
+	while (i <= t_vars.w)
 	{
-		// sleep (1);
+		// printf ("i ========================== %d ===========================\n",i);
 		j = 0;
 		s = ft_split(str[i]);
 		while (s[j])
 		{
 			if (check_Number(s[j]) == 1)
 			{
+				max_min(&s[j]);
+				checkelementisfree(s[j]);
 				ret[k] = ft_atoi(s[j]);
-				free(s[j]);
 			}
+			free(s[j]);
 			k++;
 			j++;
 		}
@@ -194,7 +198,6 @@ int	code_iscorrect(int *str)
 		j++;
 		i++;
 	}
-	// printf ("jjjjj ================ %d ==================\n", j);
 	return (b);
 }
 
@@ -229,10 +232,8 @@ int	laadad_lkbir(int *ptr)
 	i = 0;
 	d = ptr[0];
 	j = 0;
-	// printf("d ========= |||||||||%d ||||||||||\n", d);
 	while (j < t_vars.k)
 	{
-		// sleep (1);
 		if (d <= ptr[j])
 		{
 			d = ptr[j];
@@ -323,18 +324,14 @@ void	five_element(int *str, int *ptr)
 	{
 		n = tree_element(str);
 	}
-	// printf ("nnnnnnnn ===================== %d\n", n);
 	i = 3;
 	while (i < t_vars.y)
 	{
 		str = swap_pa(str, ptr, y);
-		// printf ("pa\n");
 		j++;
 		i++;
 	}
-	// printf ("jjjjjjjj ============================= %d\n", j);
 	j = j + n;
-	// printf ("count haraka ========================= %d\n", j);
 }
 
 int	*sort_element(int *str, int *res)
@@ -380,16 +377,10 @@ int	returnstr(int *str, int *ptr)
 	
 	j = 0;
 	y = 0;
-	// printf("t_vars.k ========= ++++++++++ %d +++++++++\n", t_vars.k);
-	// printf("t_vars.y ========= ++++++++++ %d +++++++++\n", t_vars.y);
-	// printf("t_vars.n ========= ++++++++++ %d +++++++++\n", t_vars.n);
-
 	k = 0;
 	while (t_vars.n < t_vars.y)
 	{
-		// sleep (1);
 		k = laadad_lkbir(ptr);
-		// printf("laadad_lkbir ========= ++++++++++ %d +++++++++\n", k);
 		if (k >= t_vars.k / 2 && k != 0)
 		{
 			rotate_rrb(ptr);
@@ -407,13 +398,6 @@ int	returnstr(int *str, int *ptr)
 		}
 	}
 	return (j);
-	// k = 0;
-	// y = 0;
-	// printf("tvars.k ========= |||||||||%d ||||||||||\n",ptr[t_vars.k]);
-	// while (t_vars.k != 0)
-	// {
-	// 		// printf ("paaa1\n");
-	// }
 }
 
 
@@ -440,13 +424,10 @@ void	check_onehundred(int *str, int *ptr)
 	{
 		j = t_vars.y - 1;
 	}
-	// printf("tvars.y ========= |||||||||%d ||||||||||\n",res[t_vars.y - 1]);
 	while (t_vars.k < t_vars.y)
 	{
-		// sleep (1);
 		if (str[n] < res[i])
 		{
-			// printf("%d . %d .  %d\n",str[n],res[i],res[j]);
 			ptr = swap_pb(str, ptr, y);
 			b++;
 			rotate_rb(ptr);
@@ -459,13 +440,11 @@ void	check_onehundred(int *str, int *ptr)
 		}
 		if (str[n] > res[j])
 		{
-			// printf("%d . %d .  %d\n",str[n],res[i],res[j]);
 			rotate_ra(str);
 			b++;
 		}
 		if (str[n] >= res[i] && str[n] <= res[j])
 		{
-			// printf("%d . %d .  %d\n",str[n],res[i],res[j]);
 			ptr = swap_pb(str, ptr, y);
 			b++;
 			if(j < t_vars.y - 1)
@@ -478,7 +457,6 @@ void	check_onehundred(int *str, int *ptr)
 	p = returnstr(str, ptr);
 	p = p + b;
 	free (res);
-	// printf ("move ||||||||+++++++++++++++++ %d +++++++++++++++++++|||||||||||||||\n", p);
 }
 
 void	check_fivehundred(int *str, int *ptr)
@@ -504,13 +482,10 @@ void	check_fivehundred(int *str, int *ptr)
 	{
 		j = t_vars.y - 1;
 	}
-	// printf("tvars.y ========= |||||||||%d ||||||||||\n",res[t_vars.y - 1]);
 	while (t_vars.k < t_vars.y)
 	{
-		// sleep (1);
 		if (str[n] < res[i])
 		{
-			// printf("%d . %d .  %d\n",str[n],res[i],res[j]);
 			ptr = swap_pb(str, ptr, y);
 			b++;
 			rotate_rb(ptr);
@@ -523,13 +498,11 @@ void	check_fivehundred(int *str, int *ptr)
 		}
 		if (str[n] > res[j])
 		{
-			// printf("%d . %d .  %d\n",str[n],res[i],res[j]);
 			rotate_ra(str);
 			b++;
 		}
 		if (str[n] >= res[i] && str[n] <= res[j])
 		{
-			// printf("%d . %d .  %d\n",str[n],res[i],res[j]);
 			ptr = swap_pb(str, ptr, y);
 			b++;
 			if(j < t_vars.y - 1)
@@ -542,7 +515,6 @@ void	check_fivehundred(int *str, int *ptr)
 	p = returnstr(str, ptr);
 	p = p + b;
 	free(res);
-	// printf ("move ||||||||+++++++++++++++++ %d +++++++++++++++++++|||||||||||||||\n", p);
 }
 
 
@@ -579,14 +551,14 @@ void checkint(int *str)
 	{
 		check_fivehundred(str, ptr);
 	}
-	i = 0;
-	while (i < t_vars.y)
-	{
-		printf("STACK : A = %d\n", str[i]);
-		i++;
-	}
-	printf("------------\n");
-	printf("STACK : A\n");
+	// i = 0;
+	// while (i < t_vars.y)
+	// {
+	// 	printf("STACK : A = %d\n", str[i]);
+	// 	i++;
+	// }
+	// printf("------------\n");
+	// printf("STACK : A\n");
 	
 	free(ptr);
 }
@@ -599,15 +571,20 @@ int	main(int ac, char **av)
 	int		j;
 
 	i = 0;
-	t_vars.n = check_elemen(av);
+	t_vars.w = check_elemen(av);
+	// printf ("t_vars.w ========================== %d ===========================\n",t_vars.w);
+	t_vars.n = check_elem(av);
 	t_vars.y = t_vars.n;
-	max_min(av);
+	// printf ("t_vars.y ========================== %d ===========================\n",t_vars.y);
+	// checkelementisfree(av);
 	str = returnint(av);
 	if (code_iscorrect(str) != t_vars.y)
 	{
 		check_doubleelement(str);
 		checkint(str);
+		free (str);
 	}
-	// while (1);
+	// check_leaks();
+	while (1);
 	return (0);
 }

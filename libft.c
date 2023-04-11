@@ -6,7 +6,7 @@
 /*   By: haarab <haarab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 12:54:00 by haarab            #+#    #+#             */
-/*   Updated: 2023/04/10 16:03:12 by haarab           ###   ########.fr       */
+/*   Updated: 2023/04/11 21:52:14 by haarab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ int	check_Number(char *str)
 		b++;
 	while (str[i])
 	{
-		// if (str[0] == '+' && (str[i] >= '1' && str[i] <= '9'))
-		// 	b++;
 		if ((str[i] < '0' || str[i] > '9'))
 			b++;
 		i++;
@@ -62,31 +60,95 @@ void	check_doubleelement(int	*str)
 	}
 }
 
+void	printErrror(void)
+{
+	write (1, "Error\n", 6);
+	exit (1);
+}
+
+void	checkelementisfree(char *str)
+{
+	int i;
+	int j;
+	int b;
+	
+	if (str[0] == '\0')
+		printErrror();
+	j = 0;
+	b = 0;
+	i = 0;
+	while (str[j])
+	{
+		if ((str[j] >= '0' && str[j] <= '9') || (str[j] == '+' || str[j] == '-'))
+			// printf ("str[i][j] ========================== %c ===========================\n",str[j]);
+			b++;
+		j++;
+	}
+	if (b == 0)
+		printErrror();
+}
+
+	
+
+int	lenthint(char *str)
+{
+	int j;
+	int b;
+
+	j = 0;
+	if (str[0] == '-' || str[0] == '+')
+		j++;
+	while (str[j] == '0')
+		j++;
+	b = 0;
+	while (str[j] >= '0' && str[j] <= '9')
+	{
+		b++;
+		j++;
+	}
+	return (b);
+}
+
 void	max_min(char  **str)
 {
 	int i;
-	// static int str2[32];
-	
-		// str2[i] = str[i];
-	i = 1;
-	while (i < t_vars.y + 1)
-	{
-		// printf ("str2[i] ======================== %s =================\n",str[i]);
-		if (ft_atoi(str[i]) > 2147483647 && ft_atoi(str[i]) < -2147483648)
-		{
-			// printf ("str[i] ======================== %s =================\n",str[i]);
-			write (1, "Error\n", 6);
-			exit (1);
-		}
-		i++;
-	}
+	int b;
+	int j;
+
+	i = 0;
+	// while (i <= t_vars.y)
+	// {
+	if ((ft_atoi(str[i]) > 2147483647  || ft_atoi(str[i]) < -2147483648))
+		printErrror();
+	b = 0;
+	b = lenthint(str[i]);
+	if (b > 10)
+		printErrror();
+		// s = ft_split(str[i]);
+		// j = 1;
+		// while (s[j])
+		// {
+		// 	if ((ft_atoi(s[j]) > 2147483647  || ft_atoi(s[j]) < -2147483648))
+		// 	{
+		// 		printErrror();
+		// 	}
+			// b = 0;
+			// b = lenthint(s[j]);
+			// if (b > 10)
+			// {
+			// 	printErrror();
+			// }
+			// j++;
+		// }
+	// 	i++;
+	// }
 }
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
-	int		i;
-	int long		n;
-	int long		res;
+	int			i;
+	long		n;
+	long		res;
 
 	i = 0;
 	n = 1;
@@ -109,17 +171,4 @@ int	ft_atoi(const char *str)
 		i++;
 	}
 	return (res * n);
-}
-
-void	free_malloc(char **str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		free (str[i]);
-		i++;
-	}
-	free(str);
 }

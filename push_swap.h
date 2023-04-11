@@ -6,7 +6,7 @@
 /*   By: haarab <haarab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:55:48 by haarab            #+#    #+#             */
-/*   Updated: 2023/04/08 23:31:10 by haarab           ###   ########.fr       */
+/*   Updated: 2023/04/11 21:41:37 by haarab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ struct s_vars
 	int n;
 	int k;
 	int y;
+	int w;
 }	t_vars;
 
 struct s_one
@@ -31,6 +32,7 @@ struct s_one
 	int t;
 }	t_one;
 
+void check_leaks();
 
 int		count_strings(char const *str, char c);
 
@@ -66,7 +68,7 @@ void	rotate_rrr(int *str, int *ptr);
 
 int		check_Number(char *str);
 
-int		ft_atoi(const char *str);
+long	ft_atoi(const char *str);
 
 void 	checkint(int *str);
 
@@ -74,10 +76,14 @@ int		tree_element(int *str);
 
 void	five_element(int *str, int *ptr);
 
-void	free_malloc(char **str);
-
 void	check_doubleelement(int	*str);
 
-void	max_min(char	**str);
+void	max_min(char **str);
+
+int		lenthint(char *str);
+
+void	checkelementisfree(char *str);
+
+void	printErrror(void);
 
 #endif
