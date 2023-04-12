@@ -6,7 +6,7 @@
 /*   By: haarab <haarab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 18:01:01 by haarab            #+#    #+#             */
-/*   Updated: 2023/04/05 16:18:03 by haarab           ###   ########.fr       */
+/*   Updated: 2023/04/12 17:55:34 by haarab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,24 +42,6 @@ void	swap_ss(int *str, int *ptr)
 {
 	swap_sa(str);
 	swap_sb(ptr);
-	// int	i;
-	// int	k;
-
-	// i = 0;
-	// if (str[i])
-	// {
-	// 	k = str[i];
-	// 	str[i] = str[i + 1];
-	// 	str[i + 1] = k;
-	// }
-	// i = 0;
-	// if (ptr[i])
-	// {
-	// 	k = ptr[i];
-	// 	ptr[i] = ptr[i + 1];
-	// 	ptr[i + 1] = k;
-	// }
-	// printf ("%s", str);
 }
 
 int *swap_pa(int *str, int *ptr, int j)
@@ -77,8 +59,7 @@ int *swap_pa(int *str, int *ptr, int j)
 		str[n] = s;
 		n++;
 	}
-	i = 0;
-	str[i] = ptr[j];
+	str[0] = ptr[j];
 	n = 0;
 	while (n < t_vars.k)
 	{
@@ -108,8 +89,7 @@ int	*swap_pb(int *str, int *ptr, int j)
 		ptr[n] = s;
 		n++;
 	}
-	i = 0;
-	ptr[i] = str[j];
+	ptr[0] = str[j];
 	n = 0;
 	while (n < t_vars.n)
 	{
@@ -122,23 +102,3 @@ int	*swap_pb(int *str, int *ptr, int j)
 	write(1, "pb\n", 3);
 	return(ptr);
 }
-	
-	// if (str[j]) -1 0 120
-	// {
-	// 	ptr[i] = str[j];
-	// }
-	// while (ptr[i])
-	// {
-	// 	ptr[i + 1] = ptr[i];
-	// 	i++;
-	// }
-	// printf ("s = %d\n", i);
-	// i = 0;
-	// i++;
-	// while (str[j])
-	// {
-	// 	str[j] = str[j + 1];
-	// 	j++;
-	// }
-	// j--;
-	// str[j] = 0;

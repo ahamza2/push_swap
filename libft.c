@@ -6,7 +6,7 @@
 /*   By: haarab <haarab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 12:54:00 by haarab            #+#    #+#             */
-/*   Updated: 2023/04/12 02:15:07 by haarab           ###   ########.fr       */
+/*   Updated: 2023/04/12 20:03:10 by haarab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,8 @@ void	check_doubleelement(int	*str)
 		{
 			if (str[i] == str[j])
 			{
-				write (1, "Error\n", 6);
-				exit (1);
+				free (str);
+				printError();
 			}
 			j++;
 		}
@@ -60,11 +60,11 @@ void	check_doubleelement(int	*str)
 	}
 }
 
-// void	printErrror(void)
-// {
-// 	write (1, "Error\n", 6);
-// 	exit (1);
-// }
+void	printError(void)
+{
+	write (1, "Error\n", 6);
+	exit (1);
+}
 
 void	checkelementisfree(char **str)
 {
@@ -74,8 +74,8 @@ void	checkelementisfree(char **str)
 	
 	if (str[0][0] == '\0')
 	{
-		write (1, "Error\n", 6);
-		exit (1);
+		free (str);
+		printError();
 	}
 	i = 1;
 	while (i <= t_vars.w)
@@ -85,14 +85,13 @@ void	checkelementisfree(char **str)
 		while (str[i][j])
 		{
 			if ((str[i][j] >= '0' && str[i][j] <= '9') || (str[i][j] == '+' || str[i][j] == '-'))
-				// printf ("str[i][j] ========================== %c ===========================\n",str[j]);
 				b++;
 			j++;
 		}
 		if (b == 0)
 		{
-			write (1, "Error\n", 6);
-			exit (1);
+			free (str);
+			printError();
 		}
 		i++;
 	}
@@ -124,38 +123,12 @@ void	max_min(char  **str)
 	int j;
 
 	i = 0;
-	// while (i <= t_vars.y)
-	// {
 	if ((ft_atoi(str[i]) > 2147483647  || ft_atoi(str[i]) < -2147483648))
-	{
-		write (1, "Error\n", 6);
-		exit (1);
-	}
+		printError();
 	b = 0;
 	b = lenthint(str[i]);
 	if (b > 10)
-	{
-		write (1, "Error\n", 6);
-		exit (1);
-	}
-		// s = ft_split(str[i]);
-		// j = 1;
-		// while (s[j])
-		// {
-		// 	if ((ft_atoi(s[j]) > 2147483647  || ft_atoi(s[j]) < -2147483648))
-		// 	{
-		// 		printErrror();
-		// 	}
-			// b = 0;
-			// b = lenthint(s[j]);
-			// if (b > 10)
-			// {
-			// 	printErrror();
-			// }
-			// j++;
-		// }
-	// 	i++;
-	// }
+		printError();
 }
 
 long	ft_atoi(const char *str)

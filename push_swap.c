@@ -6,101 +6,11 @@
 /*   By: haarab <haarab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 13:30:40 by haarab            #+#    #+#             */
-/*   Updated: 2023/04/12 02:30:53 by haarab           ###   ########.fr       */
+/*   Updated: 2023/04/12 20:05:01 by haarab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	count_strings(char const *str, char c)
-{
-	int	i;
-	int	count;
-
-	count = 0;
-	i = 0;
-	while (str[i])
-	{
-		while (str[i] && str[i] == c)
-			i++;
-		if (str[i] != '\0')
-			count++;
-		while (str[i] && str[i] != c)
-			i++;
-	}
-	return (count);
-}
-
-int	sep_length(char const *str, char c)
-{
-	int	len;
-	int	i;
-
-	len = 0;
-	i = 0;
-	while (str[i] && str[i] == c)
-		i++;
-	while (str[i] && str[i] != c)
-	{
-		i++;
-		len++;
-	}
-	return (len);
-}
-
-char	*strfil(char const *str, char c)
-{
-	char	*word;
-	int		length;
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	length = sep_length(str, c);
-	word = malloc(sizeof(int) * length + 1);
-	if (!word)
-	{
-		return (0);
-	}
-	while (str[i] && str[i] == c)
-		i++;
-	while (str[i] && str[i] != c)
-	{
-		word[j] = str[i];
-		i++;
-		j++;
-	}
-	word[j] = 0;
-	return (word);
-}
-
-char	**ft_split(char const *s)
-{
-	int		i;
-	int		j;
-	char	**arr;
-
-	i = 0;
-	if (!s)
-		return (NULL);
-	j = count_strings(s, ' ');
-	arr = malloc((j + 1) * sizeof(char *));
-	if (!arr)
-		return (NULL);
-	while (*s && j)
-	{
-		while (*s && *s == ' ')
-		s++;
-		arr[i] = strfil(s, ' ');
-		s += sep_length(s, ' ');
-		while (*s && *s == ' ')
-		s++;
-		i++;
-	}
-	arr[i] = 0;
-	return (arr);
-}
 
 int	check_elemen(char **str)
 {
@@ -115,7 +25,7 @@ int	check_elemen(char **str)
 	return(i);
 }
 
-int	check_elem(char **str)
+int	count_element(char **str)
 {
 	char **s;
 	int i;
@@ -128,57 +38,58 @@ int	check_elem(char **str)
 	{
 		j = 1;
 		s = ft_split(str[i]);
-	// 	printf ("s ++++++++++++++++++++++++ %s ++++++++++++++++++++\n",*s);
 		free (s[0]);
 		while (s[j])
 		{
-			// printf ("str[j] ========================== %s ===========================\n",str[j]);
 			b++;
-			// free (s[j]);
 			j++;
 		}
 		free (s);
 		b++;
 		i++;
 	}
-	// printf ("b ========================== %d ===========================\n",b);
 	return(b);
 }
 
+int	*returnint(char **s, int *ret, int j, int k)
+{
+	if (check_Number(s[j]) == 1)
+	{
+		max_min(&s[j]);
+		ret[k] = ft_atoi(s[j]);
+		free(s[j]);
+	}
+	return (ret);
+}
 
-int *returnint(char **str)
+
+int *returninteger(char **str)
 {
 	int		*ret;
 	char	**s;
 	int 	i;
 	int		j;
 	int		k;
-	int		b;
 	
 	ret = malloc(sizeof(int) * t_vars.y + 1);
-	// if (ret == NULL)
-	// 	return (NULL);
+	if (ret == NULL)
+		return (NULL);
 	i = 1;
 	k = 0;
 	while (i <= t_vars.w)
 	{
-		// printf ("i ========================== %d ===========================\n",i);
 		j = 0;
 		s = ft_split(str[i]);
 		while (s[j])
 		{
-			if (check_Number(s[j]) == 1)
-			{
-				max_min(&s[j]);
-				ret[k] = ft_atoi(s[j]);
-				free(s[j]);
-			}
+			ret = returnint (s, ret, j, k);
 			k++;
 			j++;
 		}
 		free(s);
 		i++;
 	}
+	check_leaks();
 	return (ret);
 }
 
@@ -204,7 +115,7 @@ int	code_iscorrect(int *str)
 }
 
 	
-int	checkstr(int *str)
+int	check_smallnumber(int *str)
 {
 	int i;
 	int j;
@@ -304,7 +215,7 @@ void	five_element(int *str, int *ptr)
 	y = 0;
 	while (k < t_vars.n)
 	{
-		d = checkstr(str);
+		d = check_smallnumber(str);
 		if (t_vars.n > 3 && (str[1] == d || str[2] == d))
 		{
 			rotate_ra(str);
@@ -333,7 +244,6 @@ void	five_element(int *str, int *ptr)
 		j++;
 		i++;
 	}
-	j = j + n;
 }
 
 int	*sort_element(int *str, int *res)
@@ -524,35 +434,19 @@ void checkint(int *str)
 {
 	int *ptr;
 	int i;
-	int k;
-	int n;
-	int j;
+
 	
 	ptr = malloc(sizeof(int) * t_vars.y + 1);
-	n = 0;
-	k = 0;
-	j = 0;
-
 	if (t_vars.y >= 1 && t_vars.y <= 3)
-	{
 		tree_element(str);
-	}
 	if (t_vars.y >= 4 && t_vars.y <= 5)
-	{
 		five_element(str, ptr);
-	}
 	if (t_vars.y >= 6 && t_vars.y <= 100)
-	{
 		check_onehundred(str, ptr);
-	}
 	if (t_vars.y >= 101 && t_vars.y <= 500)
-	{
 		check_fivehundred(str, ptr);
-	}
 	if (t_vars.y >= 501)
-	{
 		check_fivehundred(str, ptr);
-	}
 	// i = 0;
 	// while (i < t_vars.y)
 	// {
@@ -574,13 +468,10 @@ int	main(int ac, char **av)
 
 	i = 0;
 	t_vars.w = check_elemen(av);
-	// printf ("t_vars.w ========================== %d ===========================\n",t_vars.w);
-	t_vars.n = check_elem(av);
+	t_vars.n = count_element(av);
 	t_vars.y = t_vars.n;
 	checkelementisfree(av);
-	// printf ("t_vars.y ========================== %d ===========================\n",t_vars.y);
-	// checkelementisfree(av);
-	str = returnint(av);
+	str = returninteger(av);
 	if (code_iscorrect(str) != t_vars.y)
 	{
 		check_doubleelement(str);

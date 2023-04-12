@@ -6,7 +6,7 @@
 /*   By: haarab <haarab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:55:48 by haarab            #+#    #+#             */
-/*   Updated: 2023/04/12 02:09:47 by haarab           ###   ########.fr       */
+/*   Updated: 2023/04/12 19:44:07 by haarab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*strfil(char const *str, char c);
 
 char	**ft_split(char const *s);
 
-int 	*returnint(char **str);
+int 	*returninteger(char **str);
 
 void	swap_sa(int *str);
 
@@ -83,6 +83,12 @@ int		lenthint(char *str);
 
 void	checkelementisfree(char **str);
 
-void	printErrror(void);
+void	printError(void);
+
+int		count_element(char **str);
+
+int		check_smallnumber(int *str);
+
+void check_leaks();
 
 #endif
