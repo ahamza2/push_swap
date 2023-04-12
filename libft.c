@@ -6,7 +6,7 @@
 /*   By: haarab <haarab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 12:54:00 by haarab            #+#    #+#             */
-/*   Updated: 2023/04/11 21:52:14 by haarab           ###   ########.fr       */
+/*   Updated: 2023/04/11 22:43:44 by haarab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,11 @@ void	check_doubleelement(int	*str)
 	}
 }
 
-void	printErrror(void)
-{
-	write (1, "Error\n", 6);
-	exit (1);
-}
+// void	printErrror(void)
+// {
+// 	write (1, "Error\n", 6);
+// 	exit (1);
+// }
 
 void	checkelementisfree(char *str)
 {
@@ -73,7 +73,10 @@ void	checkelementisfree(char *str)
 	int b;
 	
 	if (str[0] == '\0')
-		printErrror();
+	{
+		write (1, "Error\n", 6);
+		exit (1);
+	}
 	j = 0;
 	b = 0;
 	i = 0;
@@ -85,7 +88,10 @@ void	checkelementisfree(char *str)
 		j++;
 	}
 	if (b == 0)
-		printErrror();
+	{
+		write (1, "Error\n", 6);
+		exit (1);
+	}
 }
 
 	
@@ -119,11 +125,17 @@ void	max_min(char  **str)
 	// while (i <= t_vars.y)
 	// {
 	if ((ft_atoi(str[i]) > 2147483647  || ft_atoi(str[i]) < -2147483648))
-		printErrror();
+	{
+		write (1, "Error\n", 6);
+		exit (1);
+	}
 	b = 0;
 	b = lenthint(str[i]);
 	if (b > 10)
-		printErrror();
+	{
+		write (1, "Error\n", 6);
+		exit (1);
+	}
 		// s = ft_split(str[i]);
 		// j = 1;
 		// while (s[j])

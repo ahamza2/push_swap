@@ -6,7 +6,7 @@
 /*   By: haarab <haarab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:55:48 by haarab            #+#    #+#             */
-/*   Updated: 2023/04/11 21:41:37 by haarab           ###   ########.fr       */
+/*   Updated: 2023/04/11 22:44:55 by haarab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ struct s_one
 	int t;
 }	t_one;
 
-void check_leaks();
 
 int		count_strings(char const *str, char c);
 

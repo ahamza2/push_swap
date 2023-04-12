@@ -6,7 +6,7 @@
 /*   By: haarab <haarab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 13:30:40 by haarab            #+#    #+#             */
-/*   Updated: 2023/04/11 21:52:20 by haarab           ###   ########.fr       */
+/*   Updated: 2023/04/12 00:06:50 by haarab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,19 +122,22 @@ int	check_elem(char **str)
 	int j;
 	int b;
 	
-	i = 1;
 	b = 0;
+	i = 1;
 	while(str[i])
 	{
 		j = 1;
 		s = ft_split(str[i]);
 	// 	printf ("s ++++++++++++++++++++++++ %s ++++++++++++++++++++\n",*s);
+		free (s[0]);
 		while (s[j])
 		{
 			// printf ("str[j] ========================== %s ===========================\n",str[j]);
 			b++;
+			// free (s[j]);
 			j++;
 		}
+		free (s);
 		b++;
 		i++;
 	}
@@ -152,9 +155,9 @@ int *returnint(char **str)
 	int		k;
 	int		b;
 	
-	ret = malloc(sizeof(int) * t_vars.y);
-	if (ret == NULL)
-		return (NULL);
+	ret = malloc(sizeof(int) * t_vars.y + 1);
+	// if (ret == NULL)
+	// 	return (NULL);
 	i = 1;
 	k = 0;
 	while (i <= t_vars.w)
@@ -169,13 +172,13 @@ int *returnint(char **str)
 				max_min(&s[j]);
 				checkelementisfree(s[j]);
 				ret[k] = ft_atoi(s[j]);
+				free(s[j]);
 			}
-			free(s[j]);
 			k++;
 			j++;
 		}
-		i++;
 		free(s);
+		i++;
 	}
 	return (ret);
 }
