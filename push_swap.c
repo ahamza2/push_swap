@@ -70,26 +70,43 @@ int *returninteger(char **str)
 	int 	i;
 	int		j;
 	int		k;
+	int		n;
+	int 	b;
 	
 	ret = malloc(sizeof(int) * t_vars.y + 1);
 	if (ret == NULL)
 		return (NULL);
 	i = 1;
 	k = 0;
+	n = 0;
 	while (i <= t_vars.w)
 	{
 		j = 0;
 		s = ft_split(str[i]);
 		while (s[j])
 		{
-			ret = returnint (s, ret, j, k);
+			b = check_Number(s[j]);
+			printf ("bbbbbbbbb ===================== %d ==================\n", b);
+			if (b == 0)
+			{
+				printf ("google\n");
+				max_min(&s[j]);
+				ret[k] = ft_atoi(s[j]);
+				free(s[j]);
+				n++;
+			}
 			k++;
 			j++;
 		}
 		free(s);
 		i++;
 	}
-	check_leaks();
+	if (n > 0)
+	{
+		free (ret);
+		write (1, "Error\n", 6);
+		exit (1);
+	}
 	return (ret);
 }
 
@@ -476,8 +493,8 @@ int	main(int ac, char **av)
 	{
 		check_doubleelement(str);
 		checkint(str);
-		free (str);
 	}
+	free (str);
 	// check_leaks();
 	// while (1);
 	return (0);

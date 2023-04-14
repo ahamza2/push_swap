@@ -20,23 +20,25 @@ int	check_Number(char *str)
 	b = 0;
 	i = 1;
 	if ((str[0] < '0' || str[0] > '9') && str[0] != '-' && str[0] != '+')
+	{
+		printf ("hamza\n");
 		b++;	
-	if ((str[0] == '-' || str[0] == '+') && str[1] == 0)
+	}
+	if ((str[0] == '-' || str[0] == '+') && str[1] == ' ' || str[1] == 0)
+	{
+		printf ("ham\n");
 		b++;
+	}
 	while (str[i])
 	{
 		if ((str[i] < '0' || str[i] > '9'))
+			printf ("aa\n");
 			b++;
 		i++;
 	}
-	if (b != 0)
-	{
-		write (1, "Error\n", 6);
-		exit (1);
-	}
-	else
-		return (1);	
+	return (b);
 }
+
 
 void	check_doubleelement(int	*str)
 {
