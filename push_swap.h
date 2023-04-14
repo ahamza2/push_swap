@@ -77,7 +77,7 @@ void	five_element(int *str, int *ptr);
 
 void	check_doubleelement(int	*str);
 
-void	max_min(char **str);
+int		max_min(char **str);
 
 int		lenthint(char *str);
 

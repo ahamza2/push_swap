@@ -21,48 +21,20 @@ int	check_Number(char *str)
 	i = 1;
 	if ((str[0] < '0' || str[0] > '9') && str[0] != '-' && str[0] != '+')
 	{
-		printf ("hamza\n");
 		b++;	
 	}
 	if ((str[0] == '-' || str[0] == '+') && str[1] == ' ' || str[1] == 0)
 	{
-		printf ("ham\n");
 		b++;
 	}
 	while (str[i])
 	{
 		if ((str[i] < '0' || str[i] > '9'))
-			printf ("aa\n");
 			b++;
 		i++;
 	}
 	return (b);
 }
-
-// #include <string.h>
-
-// int check_Number(char *str) {
-//     int i = 0;
-//     int b = 0;
-//     int len = strlen(str);
-    
-//     // Check for sign or digit at the beginning of the string
-//     if ((str[0] < '0' || str[0] > '9') && str[0] != '-' && str[0] != '+') {
-//         b++;
-//     } else if ((str[0] == '-' || str[0] == '+') && (len == 1 || str[1] == ' ')) {
-//         b++;
-//     }
-    
-//     // Check for digits in the rest of the string
-//     for (i = 1; i < len; i++) {
-//         if (str[i] < '0' || str[i] > '9') {
-//             b++;
-//         }
-//     }
-    
-//     return b;
-// }
-
 
 void	check_doubleelement(int	*str)
 {
@@ -97,10 +69,11 @@ void	checkelementisfree(char **str)
 	int i;
 	int j;
 	int b;
+	int n;
 	
+	n = 0;
 	if (str[0][0] == '\0')
 	{
-		free (str);
 		printError();
 	}
 	i = 1;
@@ -116,7 +89,6 @@ void	checkelementisfree(char **str)
 		}
 		if (b == 0)
 		{
-			free (str);
 			printError();
 		}
 		i++;
@@ -142,19 +114,25 @@ int	lenthint(char *str)
 	return (b);
 }
 
-void	max_min(char  **str)
+int	max_min(char  **str)
 {
 	int i;
 	int b;
 	int j;
+	int n;
 
 	i = 0;
 	if ((ft_atoi(str[i]) > 2147483647  || ft_atoi(str[i]) < -2147483648))
-		printError();
+	{
+		n++;
+	}
 	b = 0;
 	b = lenthint(str[i]);
 	if (b > 10)
-		printError();
+	{
+		n++;
+	}
+	return (n);
 }
 
 long	ft_atoi(const char *str)

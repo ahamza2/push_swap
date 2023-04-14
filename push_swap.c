@@ -51,16 +51,6 @@ int	count_element(char **str)
 	return(b);
 }
 
-int	*returnint(char **s, int *ret, int j, int k)
-{
-	if (check_Number(s[j]) == 1)
-	{
-		max_min(&s[j]);
-		ret[k] = ft_atoi(s[j]);
-		free(s[j]);
-	}
-	return (ret);
-}
 
 
 int *returninteger(char **str)
@@ -70,8 +60,9 @@ int *returninteger(char **str)
 	int 	i;
 	int		j;
 	int		k;
+	int		b;
+	int		c;
 	int		n;
-	int 	b;
 	
 	ret = malloc(sizeof(int) * t_vars.y + 1);
 	if (ret == NULL)
@@ -81,31 +72,30 @@ int *returninteger(char **str)
 	n = 0;
 	while (i <= t_vars.w)
 	{
+		n = 0;
 		j = 0;
 		s = ft_split(str[i]);
 		while (s[j])
 		{
-			b = check_Number(s[j]);
-			 b);
-			if (b == 0)
+			// check_Number(s[j]);
+			ret[k] = ft_atoi(s[j]);
+			if (max_min(&s[j]) != 0)
 			{
-				printf ("google\n");
-				max_min(&s[j]);
-				ret[k] = ft_atoi(s[j]);
-				free(s[j]);
 				n++;
 			}
+			free(s[j]);
 			k++;
 			j++;
 		}
 		free(s);
 		i++;
-	}
-	if (n > 0)
-	{
-		free (ret);
-		write (1, "Error\n", 6);
-		exit (1);
+		printf ("nnnnnnnnnnn ==================== %d ========================\n", n);
+		if (n > 0)
+		{
+			free (ret);
+			write (2, "Error\n", 6);
+			exit (1);
+		}
 	}
 	return (ret);
 }
@@ -464,14 +454,14 @@ void checkint(int *str)
 		check_fivehundred(str, ptr);
 	if (t_vars.y >= 501)
 		check_fivehundred(str, ptr);
-	// i = 0;
-	// while (i < t_vars.y)
-	// {
-	// 	printf("STACK : A = %d\n", str[i]);
-	// 	i++;
-	// }
-	// printf("------------\n");
-	// printf("STACK : A\n");
+	i = 0;
+	while (i < t_vars.y)
+	{
+		printf("STACK : A = %d\n", str[i]);
+		i++;
+	}
+	printf("------------\n");
+	printf("STACK : A\n");
 	
 	free(ptr);
 }
@@ -482,6 +472,7 @@ int	main(int ac, char **av)
 	int		*str;
 	int		i;
 	int		j;
+	int		n;
 
 	i = 0;
 	t_vars.w = check_elemen(av);
