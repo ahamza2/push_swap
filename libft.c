@@ -39,6 +39,30 @@ int	check_Number(char *str)
 	return (b);
 }
 
+// #include <string.h>
+
+// int check_Number(char *str) {
+//     int i = 0;
+//     int b = 0;
+//     int len = strlen(str);
+    
+//     // Check for sign or digit at the beginning of the string
+//     if ((str[0] < '0' || str[0] > '9') && str[0] != '-' && str[0] != '+') {
+//         b++;
+//     } else if ((str[0] == '-' || str[0] == '+') && (len == 1 || str[1] == ' ')) {
+//         b++;
+//     }
+    
+//     // Check for digits in the rest of the string
+//     for (i = 1; i < len; i++) {
+//         if (str[i] < '0' || str[i] > '9') {
+//             b++;
+//         }
+//     }
+    
+//     return b;
+// }
+
 
 void	check_doubleelement(int	*str)
 {

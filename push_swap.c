@@ -86,7 +86,7 @@ int *returninteger(char **str)
 		while (s[j])
 		{
 			b = check_Number(s[j]);
-			printf ("bbbbbbbbb ===================== %d ==================\n", b);
+			 b);
 			if (b == 0)
 			{
 				printf ("google\n");
