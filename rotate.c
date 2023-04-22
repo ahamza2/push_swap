@@ -6,7 +6,7 @@
 /*   By: haarab <haarab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 19:45:56 by haarab            #+#    #+#             */
-/*   Updated: 2023/04/12 17:49:19 by haarab           ###   ########.fr       */
+/*   Updated: 2023/04/15 00:23:36 by haarab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	rotate_ra(int *str)
 {
+	t_vars vars;
 	int	i;
 	int	j;
 	int	k;
@@ -21,7 +22,7 @@ void	rotate_ra(int *str)
 	i = 0;
 	j = 1;
 	k = str[i];
-	while (i < t_vars.n)
+	while (i < vars.n)
 		str[i++] = str[j++];
 	i--;
 	str[i] = k;
@@ -30,6 +31,7 @@ void	rotate_ra(int *str)
 
 void	rotate_rb(int *ptr)
 {
+	t_vars vars;
 	int	i;
 	int	j;
 	int	k;
@@ -37,7 +39,7 @@ void	rotate_rb(int *ptr)
 	i = 0;
 	j = 1;
 	k = ptr[i];
-	while (i < t_vars.k)
+	while (i < vars.k)
 		ptr[i++] = ptr[j++];
 	i--;
 	ptr[i] = k;

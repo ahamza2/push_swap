@@ -1,42 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.c                                            :+:      :+:    :+:   */
+/*   checkargisfree.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haarab <haarab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/07 12:54:00 by haarab            #+#    #+#             */
-/*   Updated: 2023/04/14 21:33:08 by haarab           ###   ########.fr       */
+/*   Created: 2023/04/14 20:38:47 by haarab            #+#    #+#             */
+/*   Updated: 2023/04/15 00:26:36 by haarab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long	ft_atoi(const char *str)
+void	print_errror(void)
 {
-	int			i;
-	long		n;
-	long		res;
+	write (2, "Error\n", 6);
+	exit (1);
+}
 
-	i = 0;
-	n = 1;
-	res = 0;
-	while ((str[i] >= 9 && str[i] <= 15) || str[i] == 32)
+void	checkelementisfree(char **str)
+{
+	t_vars	vars;
+	int	i;
+	int	j;
+	int	b;
+
+	if (str[0][0] == '\0')
+		print_errror();
+	i = 1;
+	while (i <= vars.w)
 	{
-		i++;
-	}
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
+		j = 0;
+		b = 0;
+		while (str[i][j])
 		{
-			n *= -1;
+			if ((str[i][j] >= '0' && str[i][j] <= '9')
+				|| (str[i][j] == '+' || str[i][j] == '-'))
+				b++;
+			j++;
 		}
+		if (b == 0)
+			print_errror();
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		res = (res * 10) + (str[i] - '0');
-		i++;
-	}
-	return (res * n);
 }

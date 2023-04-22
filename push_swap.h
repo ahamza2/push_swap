@@ -6,58 +6,67 @@
 /*   By: haarab <haarab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:55:48 by haarab            #+#    #+#             */
-/*   Updated: 2023/04/12 19:44:07 by haarab           ###   ########.fr       */
+/*   Updated: 2023/04/15 00:56:01 by haarab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 
-struct s_vars
+typedef struct s_vars
 {
-	int n;
-	int k;
-	int y;
-	int w;
+	int	n;
+	int	k;
+	int	y;
+	int	w;
 }	t_vars;
 
-struct s_one
+typedef struct s_ort
 {
-	int *pt;
-	int	*st;
-	int t;
-}	t_one;
+	int	i;
+	int	j;
+}	t_sort;
 
+int	check_number(char *str, int *ret);
 
-int		count_strings(char const *str, char c);
+int	code_iscorrect(int *str);
 
-int		sep_length(char const *str, char c);
+void	check_doubleelement(int	*str);
+
+void	print_errror(void);
+
+void	checkelementisfree(char **str);
+
+int	count_arg(char **str);
+
+int	count_element(char **str);
+
+int	count_strings(char const *str, char c);
+
+int	sep_length(char const *str, char c);
 
 char	*strfil(char const *str, char c);
 
 char	**ft_split(char const *s);
 
-int 	*returninteger(char **str);
+long	ft_atoi(const char *str);
 
-void	swap_sa(int *str);
+void	free_error(int *ret);
 
-void	swap_sb(int *ptr);
+int	lenthint(char *str);
 
-void	swap_ss(int *str, int *ptr);
+void	max_min(char **str, int *ret);
 
-int		*swap_pa(int *str, int *ptr, int j);
+void	returnstr(int *str, int *ptr);
 
-int		*swap_pb(int *str, int *ptr, int j);
+void	checkint(int *str);
 
-void	rotate_ra(int *str);
+void	returnint(char **s, int *ret, int j, int k);
 
-void	rotate_rb(int *ptr);
-
-void	rotate_rr(int *str, int *ptr);
+int	*returninteger(char **str);
 
 void	rotate_rra(int *str);
 
@@ -65,30 +74,126 @@ void	rotate_rrb(int *ptr);
 
 void	rotate_rrr(int *str, int *ptr);
 
-int		check_Number(char *str);
+void	rotate_ra(int *str);
 
-long	ft_atoi(const char *str);
+void	rotate_rb(int *ptr);
 
-void 	checkint(int *str);
+void	rotate_rr(int *str, int *ptr);
 
-int		tree_element(int *str);
+void	tree_element(int *str);
 
 void	five_element(int *str, int *ptr);
 
-void	check_doubleelement(int	*str);
+void	hundred(int *res, int *str, int *ptr);
 
-int		max_min(char **str);
+void	check_onehundred(int *str, int *ptr);
 
-int		lenthint(char *str);
+void	check_fivehundred(int *str, int *ptr);
 
-void	checkelementisfree(char **str);
+void	sort_elem(int *res, int i, int j, int k);
 
-void	printError(void);
+int	*sortelement_fromsmalltolargnumber(int *str, int *res);
 
-int		count_element(char **str);
+int	small_number(int *str);
 
-int		check_smallnumber(int *str);
+int	bigg_number(int *ptr);
 
-void check_leaks();
+void	swap_sa(int *str);
+
+void	swap_sb(int *ptr);
+
+void	swap_ss(int *str, int *ptr);
+
+int	*swap_pa(int *str, int *ptr, int j);
+
+int	*swap_pb(int *str, int *ptr, int j);
+
+
+
+
+
+
+
+
+
+
+
+
+
+// int		sep_length(char const *str, char c);
+
+// char	*strfil(char const *str, char c);
+
+// char	**ft_split(char const *s);
+
+// int		*returninteger(char **str);
+
+// void	swap_sa(int *str);
+
+// void	swap_sb(int *ptr);
+
+// void	swap_ss(int *str, int *ptr);
+
+// int		*swap_pa(int *str, int *ptr, int j);
+
+// int		*swap_pb(int *str, int *ptr, int j);
+
+// void	rotate_ra(int *str);
+
+// void	rotate_rb(int *ptr);
+
+// void	rotate_rr(int *str, int *ptr);
+
+// void	rotate_rra(int *str);
+
+// void	rotate_rrb(int *ptr);
+
+// void	rotate_rrr(int *str, int *ptr);
+
+// int		check_number(char *str, int *ret);
+
+// long	ft_atoi(const char *str);
+
+// void	checkint(int *str);
+
+// void	tree_element(int *str);
+
+// void	five_element(int *str, int *ptr);
+
+// void	check_doubleelement(int	*str);
+
+// void	max_min(char **str, int *ret);
+
+// int		lenthint(char *str);
+
+// void	checkelementisfree(char **str);
+
+// void	print_errror(void);
+
+// void	free_error(int *ret);
+
+// int		count_arg(char **str);
+
+// int		count_element(char **str);
+
+// int		code_iscorrect(int *str);
+
+// void	returnint(char **s, int *ret, int j, int k);
+
+// int		small_number(int *str);
+
+// int		*sortelement_fromsmalltolargnumber(int *str, int *res);
+
+// void	sort_elem(int *res, int i, int j, int k);
+
+// int		bigg_number(int *ptr);
+
+// void	hundred(int *res, int *str, int *ptr);
+
+// void	check_onehundred(int *str, int *ptr);
+
+// void	check_fivehundred(int *str, int *ptr);
+
+// void	returnstr(int *str, int *ptr);
 
 #endif

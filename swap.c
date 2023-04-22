@@ -6,7 +6,7 @@
 /*   By: haarab <haarab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 18:01:01 by haarab            #+#    #+#             */
-/*   Updated: 2023/04/12 17:55:34 by haarab           ###   ########.fr       */
+/*   Updated: 2023/04/15 00:58:47 by haarab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,14 @@ void	swap_ss(int *str, int *ptr)
 	swap_sb(ptr);
 }
 
-int *swap_pa(int *str, int *ptr, int j)
+int	*swap_pa(int *str, int *ptr, int j)
 {
-	int i;
-	int	k;
-	int n;
-	int s;
-	
+	t_vars vars;
+	int	n;
+	int	s;
+
 	n = 0;
-	while (n <= t_vars.n)
+	while (n <= vars.n)
 	{
 		s = str[0];
 		str[0] = str[n];
@@ -61,28 +60,27 @@ int *swap_pa(int *str, int *ptr, int j)
 	}
 	str[0] = ptr[j];
 	n = 0;
-	while (n < t_vars.k)
+	while (n < vars.k)
 	{
 		ptr[j] = ptr[j + 1];
 		j++;
 		n++;
 	}
-	t_vars.n++;
-	t_vars.k--;
+	vars.n++;
+	vars.k--;
 	write(1, "pa\n", 3);
-	return(str);
+	return (str);
 }
 
 int	*swap_pb(int *str, int *ptr, int j)
 {
-	int i;
-	int	k;
-	int n;
-	int s;
-	
+	t_vars vars;
+	int	n;
+	int	s;
+
 	n = 0;
 	s = 0;
-	while (n <= t_vars.k)
+	while (n <= vars.k)
 	{
 		s = ptr[0];
 		ptr[0] = ptr[n];
@@ -91,14 +89,14 @@ int	*swap_pb(int *str, int *ptr, int j)
 	}
 	ptr[0] = str[j];
 	n = 0;
-	while (n < t_vars.n)
+	while (n < vars.n)
 	{
 		str[j] = str[j + 1];
 		j++;
 		n++;
 	}
-	t_vars.n--;
-	t_vars.k++;
+	vars.n--;
+	vars.k++;
 	write(1, "pb\n", 3);
-	return(ptr);
+	return (ptr);
 }

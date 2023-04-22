@@ -1,42 +1,53 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.c                                            :+:      :+:    :+:   */
+/*   ft_count.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haarab <haarab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/07 12:54:00 by haarab            #+#    #+#             */
-/*   Updated: 2023/04/14 21:33:08 by haarab           ###   ########.fr       */
+/*   Created: 2023/04/14 21:27:29 by haarab            #+#    #+#             */
+/*   Updated: 2023/04/15 00:19:48 by haarab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long	ft_atoi(const char *str)
+int	count_arg(char **str)
 {
-	int			i;
-	long		n;
-	long		res;
+	int	i;
 
 	i = 0;
-	n = 1;
-	res = 0;
-	while ((str[i] >= 9 && str[i] <= 15) || str[i] == 32)
+	while (str[i])
 	{
 		i++;
 	}
-	if (str[i] == '-' || str[i] == '+')
+	i--;
+	return (i);
+}
+
+int	count_element(char **str)
+{
+	char	**s;
+	int		i;
+	int		j;
+	int		b;
+
+	b = 0;
+	i = 1;
+	while (str[i])
 	{
-		if (str[i] == '-')
+		j = 1;
+		s = ft_split(str[i]);
+		free (s[0]);
+		while (s[j])
 		{
-			n *= -1;
+			free (s[j]);
+			b++;
+			j++;
 		}
+		free (s);
+		b++;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		res = (res * 10) + (str[i] - '0');
-		i++;
-	}
-	return (res * n);
+	return (b);
 }

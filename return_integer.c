@@ -1,57 +1,49 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reverse_rotate.c                                   :+:      :+:    :+:   */
+/*   return_integer.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haarab <haarab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/06 20:04:31 by haarab            #+#    #+#             */
-/*   Updated: 2023/04/15 00:23:28 by haarab           ###   ########.fr       */
+/*   Created: 2023/04/14 22:09:23 by haarab            #+#    #+#             */
+/*   Updated: 2023/04/15 00:27:32 by haarab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	rotate_rra(int *str)
+void	returnint(char **s, int *ret, int j, int k)
 {
-	t_vars vars;
-	int	d;
-	int	i;
-	int	k;
-
-	i = 0;
-	k = 0;
-	while (i < vars.n)
+	ret[k] = ft_atoi(s[j]);
+	if (check_number(s[j], ret) == 1)
 	{
-		d = str[k];
-		str[k] = str[i];
-		str[i] = d;
-		i++;
+		max_min(&s[j], ret);
+		free(s[j]);
 	}
-	write(1, "rra\n", 4);
 }
 
-void	rotate_rrb(int *ptr)
+int	*returninteger(char **str)
 {
-	t_vars vars;
-	int	d;
-	int	i;
-	int	k;
+	t_vars	vars;
+	int		*ret;
+	char	**s;
+	int		i;
+	int		j;
+	int		k;
 
-	i = 0;
+	ret = malloc(sizeof(int) * vars.y);
+	if (ret == NULL)
+		return (NULL);
+	i = 1;
 	k = 0;
-	while (i < vars.k)
+	while (i <= vars.w)
 	{
-		d = ptr[k];
-		ptr[k] = ptr[i];
-		ptr[i] = d;
+		j = 0;
+		s = ft_split(str[i]);
+		while (s[j])
+			returnint(s, ret, j++, k++);
+		free(s);
 		i++;
 	}
-	write(1, "rrb\n", 4);
-}
-
-void	rotate_rrr(int *str, int *ptr)
-{
-	rotate_rra(str);
-	rotate_rrb(ptr);
+	return (ret);
 }
