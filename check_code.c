@@ -42,7 +42,6 @@ int	check_number(char *str, int *ret)
 
 int	code_iscorrect(int *str)
 {
-	t_vars	vars;
 	int	i;
 	int	j;
 	int	b;
@@ -50,7 +49,7 @@ int	code_iscorrect(int *str)
 	i = 0;
 	j = 1;
 	b = 1;
-	while (i < vars.y - 1)
+	while (i < t_vars.y - 1)
 	{
 		if (str[i] < str[j])
 		{

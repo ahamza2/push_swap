@@ -20,7 +20,6 @@ void	print_errror(void)
 
 void	checkelementisfree(char **str)
 {
-	t_vars	vars;
 	int	i;
 	int	j;
 	int	b;
@@ -28,7 +27,7 @@ void	checkelementisfree(char **str)
 	if (str[0][0] == '\0')
 		print_errror();
 	i = 1;
-	while (i <= vars.w)
+	while (i <= t_vars.w)
 	{
 		j = 0;
 		b = 0;

@@ -6,7 +6,7 @@
 /*   By: haarab <haarab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 17:55:48 by haarab            #+#    #+#             */
-/*   Updated: 2023/04/15 00:56:01 by haarab           ###   ########.fr       */
+/*   Updated: 2023/04/15 17:36:00 by haarab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef struct s_vars
+struct s_vars
 {
 	int	n;
 	int	k;
@@ -24,29 +24,29 @@ typedef struct s_vars
 	int	w;
 }	t_vars;
 
-typedef struct s_ort
+struct s_ort
 {
 	int	i;
 	int	j;
 }	t_sort;
 
-int	check_number(char *str, int *ret);
+int		check_number(char *str, int *ret);
 
-int	code_iscorrect(int *str);
-
-void	check_doubleelement(int	*str);
+int		code_iscorrect(int *str);
 
 void	print_errror(void);
 
 void	checkelementisfree(char **str);
 
-int	count_arg(char **str);
+void	check_doubleelement(int	*str);
 
-int	count_element(char **str);
+int		count_arg(char **str);
 
-int	count_strings(char const *str, char c);
+int		count_element(char **str);
 
-int	sep_length(char const *str, char c);
+int		count_strings(char const *str, char c);
+
+int		sep_length(char const *str, char c);
 
 char	*strfil(char const *str, char c);
 
@@ -56,17 +56,17 @@ long	ft_atoi(const char *str);
 
 void	free_error(int *ret);
 
-int	lenthint(char *str);
+int		lenthint(char *str);
 
 void	max_min(char **str, int *ret);
-
-void	returnstr(int *str, int *ptr);
 
 void	checkint(int *str);
 
 void	returnint(char **s, int *ret, int j, int k);
 
-int	*returninteger(char **str);
+int		*returninteger(char **str);
+
+void	returnstr(int *str, int *ptr);
 
 void	rotate_rra(int *str);
 
@@ -92,11 +92,11 @@ void	check_fivehundred(int *str, int *ptr);
 
 void	sort_elem(int *res, int i, int j, int k);
 
-int	*sortelement_fromsmalltolargnumber(int *str, int *res);
+int		*sortelement_fromsmalltolargnumber(int *str, int *res);
 
-int	small_number(int *str);
+int		small_number(int *str);
 
-int	bigg_number(int *ptr);
+int		bigg_number(int *ptr);
 
 void	swap_sa(int *str);
 
@@ -104,96 +104,8 @@ void	swap_sb(int *ptr);
 
 void	swap_ss(int *str, int *ptr);
 
-int	*swap_pa(int *str, int *ptr, int j);
+int		*swap_pa(int *str, int *ptr, int j);
 
-int	*swap_pb(int *str, int *ptr, int j);
-
-
-
-
-
-
-
-
-
-
-
-
-
-// int		sep_length(char const *str, char c);
-
-// char	*strfil(char const *str, char c);
-
-// char	**ft_split(char const *s);
-
-// int		*returninteger(char **str);
-
-// void	swap_sa(int *str);
-
-// void	swap_sb(int *ptr);
-
-// void	swap_ss(int *str, int *ptr);
-
-// int		*swap_pa(int *str, int *ptr, int j);
-
-// int		*swap_pb(int *str, int *ptr, int j);
-
-// void	rotate_ra(int *str);
-
-// void	rotate_rb(int *ptr);
-
-// void	rotate_rr(int *str, int *ptr);
-
-// void	rotate_rra(int *str);
-
-// void	rotate_rrb(int *ptr);
-
-// void	rotate_rrr(int *str, int *ptr);
-
-// int		check_number(char *str, int *ret);
-
-// long	ft_atoi(const char *str);
-
-// void	checkint(int *str);
-
-// void	tree_element(int *str);
-
-// void	five_element(int *str, int *ptr);
-
-// void	check_doubleelement(int	*str);
-
-// void	max_min(char **str, int *ret);
-
-// int		lenthint(char *str);
-
-// void	checkelementisfree(char **str);
-
-// void	print_errror(void);
-
-// void	free_error(int *ret);
-
-// int		count_arg(char **str);
-
-// int		count_element(char **str);
-
-// int		code_iscorrect(int *str);
-
-// void	returnint(char **s, int *ret, int j, int k);
-
-// int		small_number(int *str);
-
-// int		*sortelement_fromsmalltolargnumber(int *str, int *res);
-
-// void	sort_elem(int *res, int i, int j, int k);
-
-// int		bigg_number(int *ptr);
-
-// void	hundred(int *res, int *str, int *ptr);
-
-// void	check_onehundred(int *str, int *ptr);
-
-// void	check_fivehundred(int *str, int *ptr);
-
-// void	returnstr(int *str, int *ptr);
+int		*swap_pb(int *str, int *ptr, int j);
 
 #endif

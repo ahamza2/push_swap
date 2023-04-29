@@ -46,12 +46,11 @@ void	swap_ss(int *str, int *ptr)
 
 int	*swap_pa(int *str, int *ptr, int j)
 {
-	t_vars vars;
 	int	n;
 	int	s;
 
 	n = 0;
-	while (n <= vars.n)
+	while (n <= t_vars.n)
 	{
 		s = str[0];
 		str[0] = str[n];
@@ -60,27 +59,26 @@ int	*swap_pa(int *str, int *ptr, int j)
 	}
 	str[0] = ptr[j];
 	n = 0;
-	while (n < vars.k)
+	while (n < t_vars.k)
 	{
 		ptr[j] = ptr[j + 1];
 		j++;
 		n++;
 	}
-	vars.n++;
-	vars.k--;
+	t_vars.n++;
+	t_vars.k--;
 	write(1, "pa\n", 3);
 	return (str);
 }
 
 int	*swap_pb(int *str, int *ptr, int j)
 {
-	t_vars vars;
 	int	n;
 	int	s;
 
 	n = 0;
 	s = 0;
-	while (n <= vars.k)
+	while (n <= t_vars.k)
 	{
 		s = ptr[0];
 		ptr[0] = ptr[n];
@@ -89,14 +87,14 @@ int	*swap_pb(int *str, int *ptr, int j)
 	}
 	ptr[0] = str[j];
 	n = 0;
-	while (n < vars.n)
+	while (n < t_vars.n)
 	{
 		str[j] = str[j + 1];
 		j++;
 		n++;
 	}
-	vars.n--;
-	vars.k++;
+	t_vars.n--;
+	t_vars.k++;
 	write(1, "pb\n", 3);
 	return (ptr);
 }

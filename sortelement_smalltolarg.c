@@ -24,23 +24,22 @@ void	sort_elem(int *res, int i, int j, int k)
 
 int	*sortelement_fromsmalltolargnumber(int *str, int *res)
 {
-	t_vars vars;
 	int	i;
 	int	j;
 	int	k;
 
 	k = 0;
-	while (k < vars.y)
+	while (k < t_vars.y)
 	{
 		res[k] = str[k];
 		k++;
 	}
 	i = 0;
-	while (i < vars.y)
+	while (i < t_vars.y)
 	{
 		k = 0;
 		j = i + 1;
-		while (j < vars.y)
+		while (j < t_vars.y)
 		{
 			sort_elem(res, i, j, k);
 			j++;
@@ -53,7 +52,6 @@ int	*sortelement_fromsmalltolargnumber(int *str, int *res)
 
 int	small_number(int *str)
 {
-	t_vars vars;
 	int	i;
 	int	j;
 	int	d;
@@ -61,7 +59,7 @@ int	small_number(int *str)
 	i = 0;
 	j = 0;
 	d = str[i];
-	while (j < vars.n)
+	while (j < t_vars.n)
 	{
 		if (d > str[j])
 		{
@@ -74,14 +72,15 @@ int	small_number(int *str)
 
 int	bigg_number(int *ptr)
 {
-	t_vars vars;
+	int	i;
 	int	j;
 	int	d;
 	int	pos;
 
+	i = 0;
 	d = ptr[0];
 	j = 0;
-	while (j < vars.k)
+	while (j < t_vars.k)
 	{
 		if (d <= ptr[j])
 		{

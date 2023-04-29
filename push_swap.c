@@ -6,64 +6,42 @@
 /*   By: haarab <haarab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 13:30:40 by haarab            #+#    #+#             */
-/*   Updated: 2023/04/15 15:46:27 by haarab           ###   ########.fr       */
+/*   Updated: 2023/04/15 16:35:44 by haarab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	returnstr(int *str, int *ptr)
-{
-	t_vars vars;
-	int	k;
-	int	y;
-
-	y = 0;
-	k = 0;
-	while (vars.n < vars.y)
-	{
-		k = bigg_number(ptr);
-		if (k >= vars.k / 2 && k != 0)
-			rotate_rrb(ptr);
-		if (k < vars.k / 2 && k != 0)
-			rotate_rb(ptr);
-		if (k == 0)
-			str = swap_pa(str, ptr, y);
-	}
-}
-
 void	checkint(int *str)
 {
-	t_vars vars;
 	int	*ptr;
 
-	ptr = malloc(sizeof(int) * vars.y);
-	if (vars.y >= 1 && vars.y <= 3)
+	ptr = malloc(sizeof(int) * t_vars.y);
+	if (t_vars.y >= 1 && t_vars.y <= 3)
 		tree_element(str);
-	if (vars.y >= 4 && vars.y <= 5)
+	if (t_vars.y >= 4 && t_vars.y <= 5)
 		five_element(str, ptr);
-	if (vars.y >= 6 && vars.y <= 100)
+	if (t_vars.y >= 6 && t_vars.y <= 100)
 		check_onehundred(str, ptr);
-	if (vars.y >= 101 && vars.y <= 500)
+	if (t_vars.y >= 101 && t_vars.y <= 500)
 		check_fivehundred(str, ptr);
-	if (vars.y >= 501)
+	if (t_vars.y >= 501)
 		check_fivehundred(str, ptr);
 	free(ptr);
 }
 
 int	main(int ac, char **av)
 {
-	t_vars vars;
 	int		*str;
 
 	if (ac >= 0)
 	{
-		vars.w = count_arg(av);
-		vars.n = count_element(av);
-		vars.y = vars.n;
+		t_vars.w = count_arg(av);
+		t_vars.n = count_element(av);
+		t_vars.y = t_vars.n;
 		checkelementisfree(av);
 		str = returninteger(av);
-		if (code_iscorrect(str) != vars.y)
+		if (code_iscorrect(str) != t_vars.y)
 		{
 			check_doubleelement(str);
 			checkint(str);

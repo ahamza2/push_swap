@@ -14,15 +14,14 @@
 
 void	check_doubleelement(int	*str)
 {
-	t_vars vars;
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < vars.y)
+	while (i < t_vars.y)
 	{
 		j = i + 1;
-		while (j < vars.y)
+		while (j < t_vars.y)
 		{
 			if (str[i] == str[j])
 			{

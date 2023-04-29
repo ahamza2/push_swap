@@ -14,7 +14,6 @@
 
 void	rotate_ra(int *str)
 {
-	t_vars vars;
 	int	i;
 	int	j;
 	int	k;
@@ -22,7 +21,7 @@ void	rotate_ra(int *str)
 	i = 0;
 	j = 1;
 	k = str[i];
-	while (i < vars.n)
+	while (i < t_vars.n)
 		str[i++] = str[j++];
 	i--;
 	str[i] = k;
@@ -31,7 +30,6 @@ void	rotate_ra(int *str)
 
 void	rotate_rb(int *ptr)
 {
-	t_vars vars;
 	int	i;
 	int	j;
 	int	k;
@@ -39,7 +37,7 @@ void	rotate_rb(int *ptr)
 	i = 0;
 	j = 1;
 	k = ptr[i];
-	while (i < vars.k)
+	while (i < t_vars.k)
 		ptr[i++] = ptr[j++];
 	i--;
 	ptr[i] = k;
