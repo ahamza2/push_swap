@@ -6,7 +6,7 @@
 /*   By: haarab <haarab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 14:52:36 by haarab            #+#    #+#             */
-/*   Updated: 2023/04/15 00:20:06 by haarab           ###   ########.fr       */
+/*   Updated: 2023/05/05 17:24:27 by haarab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,7 @@ char	*strfil(char const *str, char c)
 	length = sep_length(str, c);
 	word = malloc(sizeof(int) * length + 1);
 	if (!word)
-	{
 		return (0);
-	}
 	while (str[i] && str[i] == c)
 		i++;
 	while (str[i] && str[i] != c)

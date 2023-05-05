@@ -6,7 +6,7 @@
 /*   By: haarab <haarab@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 13:30:40 by haarab            #+#    #+#             */
-/*   Updated: 2023/04/15 16:35:44 by haarab           ###   ########.fr       */
+/*   Updated: 2023/05/05 17:25:05 by haarab           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	checkint(int *str)
 	int	*ptr;
 
 	ptr = malloc(sizeof(int) * t_vars.y);
+	if (!ptr)
+		return ;
 	if (t_vars.y >= 1 && t_vars.y <= 3)
 		tree_element(str);
 	if (t_vars.y >= 4 && t_vars.y <= 5)
